@@ -1,6 +1,13 @@
-# **Satria-Nila**
-PBL Web Service x MLOps : 
+# **S A T R I A**
+PBL Web Service x MLOps x Data Mining :  
 
+"Pengembangan Eary Warning System berbasis Machine Learning untuk Klasifikasi Kualitas Air serta Mitigasi Risiko pada Biota Akuakultur"
+
+--
+
+"Machine Learning-Based Early Warning System Development for Water Quality Classification to Mitigate Risks among Aquacultural Biotes"
+---
+---
 ## **Deskripsi**
 
 ---
