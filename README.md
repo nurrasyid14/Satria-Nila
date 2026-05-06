@@ -197,6 +197,53 @@ smart-water-monitoring/
     ├── mlruns/
     └── Dockerfile
 ```
+Proyek SATRIA mengadopsi arsitektur Microservices untuk memisahkan tanggung jawab antar komponen (Separation of Concerns). Setiap layanan berjalan di dalam kontainer terisolasi menggunakan Docker.
+
+### **1. Akar Proyek (Root Directory)**
+
+Bagian ini bertanggung jawab atas orkestrasi seluruh sistem dan konfigurasi global.
+
+- **docker-compose.yml**: Berkas utama untuk menjalankan seluruh layanan dalam satu perintah. Berkas ini mendefinisikan bagaimana setiap kontainer (API, ML, Data, Frontend, MLflow) berinteraksi dan berbagi jaringan.
+- **.env**: Menyimpan variabel lingkungan sensitif (seperti kunci API Supabase, kredensial database, atau URL MLflow) agar tidak tertulis langsung di dalam kode program.
+- **README.md**: Dokumentasi proyek yang berisi instruksi instalasi, cara menjalankan sistem, dan penjelasan singkat mengenai alur kerja aplikasi.
+
+### **2. Layer Layanan (Services)**
+
+Setiap folder di dalam `services/` adalah aplikasi mandiri yang memiliki `Dockerfile` dan `requirements.txt` sendiri.
+
+#### **A. api-service (The Gateway)**
+Bertindak sebagai titik masuk utama bagi permintaan dari Frontend dan pengatur alur data antar layanan.
+- **app/main.py**: Titik masuk (*entry point*) aplikasi FastAPI.
+- **routes/**: Berisi definisi endpoint API (contoh: `/predict` untuk klasifikasi air, `/health` untuk cek status sistem).
+- **schemas/**: Mengatur validasi tipe data yang masuk dan keluar menggunakan Pydantic (contoh: memastikan input sensor adalah tipe numerik).
+- **services/**: Berisi logika komunikasi antar layanan (`ml_client.py` untuk menghubungi layanan ML dan `data_client.py` untuk layanan data).
+- **core/**: Menyimpan pengaturan inti sistem seperti konfigurasi CORS, keamanan, atau autentikasi.
+- **utils/**: Fungsi pembantu umum, seperti sistem pencatatan log (*logging*).
+
+#### **B. ml-service (The Inference Engine)**
+Layanan khusus untuk menangani siklus hidup Machine Learning, mulai dari eksperimen hingga prediksi.
+- **model/**: Berisi skrip produksi untuk pelatihan model (`train.py`), eksekusi prediksi (`predict.py`), dan alur pemrosesan data (`pipeline.py`).
+- **mlflow/**: Berisi logika integrasi dengan server MLflow untuk pelacakan metrik dan manajemen versi model.
+- **artifacts/**: Tempat penyimpanan fisik berkas model yang sudah dilatih (seperti berkas `.pkl` atau `.joblib`).
+
+#### **C. data-service (The Data Access Layer)**
+Layanan yang bertanggung jawab penuh atas semua komunikasi dan persistensi data ke database.
+- **db/**: Berisi koneksi ke Supabase/PostgreSQL dan definisi kueri database yang sering digunakan.
+- **routes/**: Menyediakan internal API agar layanan lain bisa mengambil atau menyimpan data tanpa harus mengakses database secara langsung.
+- **schemas/**: Memastikan data yang akan dikirim atau disimpan ke database sesuai dengan format yang ditentukan.
+
+### **3. Layer Antarmuka (Frontend)**
+
+Dibangun menggunakan React (Vite) untuk visualisasi monitoring kualitas air.
+- **src/components/**: Komponen UI kecil yang bersifat *reusable* (seperti `FormInput.jsx` atau `ResultCard.jsx`).
+- **src/pages/**: Struktur halaman utama aplikasi (seperti halaman Beranda dan Dashboard Monitoring).
+- **src/services/api.js**: Modul yang menangani komunikasi HTTP dari peramban ke `api-service`.
+
+### **4. Layer Pelacakan (MLflow)**
+
+Layanan mandiri untuk mengelola siklus hidup eksperimen Machine Learning.
+- **mlruns/**: Folder tempat MLflow menyimpan log fisik eksperimen (parameter, metrik akurasi, dan file model).
+- **Dockerfile**: Konfigurasi khusus untuk menjalankan server UI MLflow di dalam kontainer agar dapat diakses melalui web browser.
 
 Proyek SATRIA mengadopsi arsitektur Microservices untuk memisahkan tanggung jawab antar komponen (Separation of Concerns). Setiap layanan berjalan di dalam kontainer terisolasi menggunakan Docker.
 
