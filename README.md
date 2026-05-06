@@ -16,6 +16,17 @@ PBL Web Service x MLOps x Data Mining :
 ---
 ## **Tentang Data**
 
+### **Deskripsi**
+
+- Shape     : 17 cols x 4300 rows
+- Theme     : Aquaculture
+- Title     : Refined_Aquaculture_Water_Suitability_Signals
+- Author    : Sandhya Palaniappan
+- Source    : Kaggle
+- Date      : March 2026
+- Link      : https://www.kaggle.com/datasets/sandhyapalaniappan/refined-aquaculture-water-suitability-signals
+
+### **Preview Data Asli**
 
 | Temperature | Turbidity (cm) | Dissolved Oxygen (mg/L) | Biochemical Oxygen Demand (mg/L) | Carbon Dioxide (CO2) |     pH | Total Alkalinity (mg L-1) | Total Hardness (mg L-1) | Calcium (mg L-1) | Ammonia (mg L-1) | Nitrite (mg L-1) | Phosphorus (mg L-1) | Hydrogen Sulfide (mg L-1) | Plankton Count (No. L-1) | Water Quality Label | Aquaculture Suitability Tier | Aquaculture Suitability Description                                                                                            |
 | ----------- | -------------: | ----------------------: | -------------------------------: | -------------------: | -----: | ------------------------: | ----------------------: | ---------------: | ---------------: | ---------------: | ------------------: | ------------------------: | -----------------------: | ------------------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
@@ -25,18 +36,64 @@ PBL Web Service x MLOps x Data Mining :
 | 1.64        |           0.07 |                  10.964 |                            8.508 |               12.955 |   4.82 |                   266.572 |                   6.628 |             8.18 |            0.885 |            3.572 |               3.174 |                     0.026 |                   1230.0 | 2                   | Reduced Suitability          | Reduced Suitability: Water conditions are under stress and may impair aquaculture performance, fish health, or pond stability. |
 | 64.86       |           2.12 |                   1.362 |                           13.335 |               13.603 | 10.244 |                   252.108 |                 339.892 |          253.997 |            0.802 |            4.656 |               3.855 |                     0.061 |                   1035.0 | 2                   | Reduced Suitability          | Reduced Suitability: Water conditions are under stress and may impair aquaculture performance, fish health, or pond stability. |
 
+
+### **Schema dalam Database**
+
+#### **Constraint**
+```
+ROOT (water_sample)
+├── required:
+│   ├── physical
+│   ├── chemical
+│   ├── biological
+│   └── water_quality
+│
+└── nested constraints:
+    └── physical:
+        └── required:
+            ├── temperature
+            └── turbidity_cm
+```
+#### **Kolom Kolom dalam Tabel**
+```
+water_sample
+├── physical                                    (object)
+│   ├── temperature                             (double) [required]
+│   └── turbidity_cm                            (double) [required]
+│
+├── chemical                        (object)
+│   ├── dissolved_oxygen                        (double)
+│   ├── biochemical_oxygen_demand               (double)
+│   ├── carbon_dioxide                          (double)
+│   ├── ph                                      (double)
+│   ├── total_alkalinity                        (double)
+│   ├── total_hardness                          (double)
+│   ├── calcium                                 (double)
+│   ├── ammonia                                 (double)
+│   ├── nitrite                                 (double)
+│   ├── phosphorus                              (double)
+│   └── hydrogen_sulfide                        (double)
+│
+├── biological                      (object)
+│   └── plankton_count                          (double)
+│
+└── water_quality                   (object)
+    ├── water_quality_label                     (int)
+    ├── aquaculture_suitability_tier            (string)
+    └── aquaculture_suitability_description     (string)
+```
 ---
 ## **Algoritma & Tools** 
 
 ### **Algoritma**
+- Semi-Supervised : Clustering/Klasifikasi
+- **Tools**
 
-### **Tools**
+- **PyCaret**
+Untuk melakukan smoke test mengenai algoritma apakah yang lebih cocok digunakan dalam kasus ini supaya mesin dapat belajar dengan baik.
+- **MLFlow**
 
-#### **PyCaret**
-
-#### **MLFlow**
-
-#### **Docker**
+- **Docker**
 
 ---
 ## **Folder Tree**
