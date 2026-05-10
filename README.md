@@ -27,16 +27,13 @@ PBL Web Service x MLOps x Data Mining :
 - Link      : https://www.kaggle.com/datasets/sandhyapalaniappan/refined-aquaculture-water-suitability-signals
 
 ### **Preview Data Asli**
-
-| Temperature | Turbidity (cm) | Dissolved Oxygen (mg/L) | Biochemical Oxygen Demand (mg/L) | Carbon Dioxide (CO2) |     pH | Total Alkalinity (mg L-1) | Total Hardness (mg L-1) | Calcium (mg L-1) | Ammonia (mg L-1) | Nitrite (mg L-1) | Phosphorus (mg L-1) | Hydrogen Sulfide (mg L-1) | Plankton Count (No. L-1) | Water Quality Label | Aquaculture Suitability Tier | Aquaculture Suitability Description                                                                                            |
-| ----------- | -------------: | ----------------------: | -------------------------------: | -------------------: | -----: | ------------------------: | ----------------------: | ---------------: | ---------------: | ---------------: | ------------------: | ------------------------: | -----------------------: | ------------------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| 67.45       |          10.13 |                   0.208 |                            7.474 |               10.181 |  4.752 |                   218.365 |                 300.125 |          337.178 |            0.286 |            4.355 |               0.006 |                     0.067 |                   6070.0 | 2                   | Reduced Suitability          | Reduced Suitability: Water conditions are under stress and may impair aquaculture performance, fish health, or pond stability. |
-| 64.63       |          94.02 |                  11.434 |                            10.86 |               14.861 |  3.085 |                    273.94 |                   8.427 |          363.661 |            0.096 |            2.183 |               0.005 |                     0.023 |                    251.0 | 2                   | Reduced Suitability          | Reduced Suitability: Water conditions are under stress and may impair aquaculture performance, fish health, or pond stability. |
-| 65.12       |          90.65 |                  12.431 |                            12.81 |                12.32 |  9.649 |                   220.813 |                  11.726 |          309.371 |            0.975 |            4.902 |               0.007 |                     0.065 |                   7219.0 | 2                   | Reduced Suitability          | Reduced Suitability: Water conditions are under stress and may impair aquaculture performance, fish health, or pond stability. |
-| 1.64        |           0.07 |                  10.964 |                            8.508 |               12.955 |   4.82 |                   266.572 |                   6.628 |             8.18 |            0.885 |            3.572 |               3.174 |                     0.026 |                   1230.0 | 2                   | Reduced Suitability          | Reduced Suitability: Water conditions are under stress and may impair aquaculture performance, fish health, or pond stability. |
-| 64.86       |           2.12 |                   1.362 |                           13.335 |               13.603 | 10.244 |                   252.108 |                 339.892 |          253.997 |            0.802 |            4.656 |               3.855 |                     0.061 |                   1035.0 | 2                   | Reduced Suitability          | Reduced Suitability: Water conditions are under stress and may impair aquaculture performance, fish health, or pond stability. |
-
-
+| Temperature (°C) | Turbidity (cm) | Dissolved Oxygen (mg/L) | BOD (mg/L) | CO₂ (mg/L) | pH   | Alkalinity (mg/L) | Hardness (mg/L) | Calcium (mg/L) | Ammonia (mg/L) | Nitrite (mg/L) | Phosphorus (mg/L) | H₂S (mg/L) | Plankton (No./L) | Label | Tier                | Description |
+|-----------------|---------------:|------------------------:|-----------:|-----------:|-----:|------------------:|----------------:|---------------:|---------------:|---------------:|------------------:|-----------:|------------------:|------:|---------------------|-------------|
+| 67.45           |          10.13 |                   0.208 |      7.474 |     10.181 | 4.75 |            218.37 |          300.13 |         337.18 |          0.286 |          4.355 |             0.006 |      0.067 |             6070  |     2 | Reduced Suitability | Water conditions under stress; may impair aquaculture performance. |
+| 64.63           |          94.02 |                  11.434 |     10.860 |     14.861 | 3.09 |            273.94 |            8.43 |         363.66 |          0.096 |          2.183 |             0.005 |      0.023 |              251  |     2 | Reduced Suitability | Water conditions under stress; may impair aquaculture performance. |
+| 65.12           |          90.65 |                  12.431 |     12.810 |     12.320 | 9.65 |            220.81 |           11.73 |         309.37 |          0.975 |          4.902 |             0.007 |      0.065 |             7219  |     2 | Reduced Suitability | Water conditions under stress; may impair aquaculture performance. |
+| 1.64            |           0.07 |                  10.964 |      8.508 |     12.955 | 4.82 |            266.57 |            6.63 |           8.18 |          0.885 |          3.572 |             3.174 |      0.026 |             1230  |     2 | Reduced Suitability | Water conditions under stress; may impair aquaculture performance. |
+| 64.86           |           2.12 |                   1.362 |     13.335 |     13.603 |10.24 |            252.11 |          339.89 |         254.00 |          0.802 |          4.656 |             3.855 |      0.061 |             1035  |     2 | Reduced Suitability | Water conditions under stress; may impair aquaculture performance. |
 ### **Schema dalam Database**
 
 #### **Constraint**
@@ -84,6 +81,9 @@ water_sample
 ```
 ---
 ## **Algoritma & Tools** 
+
+### **Bagan Alur**
+![Flowchart](flowchart.svg)
 
 ### **Algoritma**
 - Semi-Supervised : Clustering/Klasifikasi
