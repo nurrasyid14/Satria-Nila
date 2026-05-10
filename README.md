@@ -136,6 +136,9 @@ smart-water-monitoring/
 │   ├── ml-service/
 │   │   ├── app/
 │   │   │   ├── main.py
+│   │   │   ├── preprocess/
+│   │   │   │   ├── splitter.py
+│   │   │   │   └── filler.py 
 │   │   │   ├── model/
 │   │   │   │   ├── train.py
 │   │   │   │   ├── predict.py
