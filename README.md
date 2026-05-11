@@ -83,7 +83,7 @@ water_sample
 ## **Algoritma & Tools** 
 
 ### **Bagan Alur**
-![Flowchart](flowchart.svg)
+![Flowchart](Flowchart.svg)
 
 ### **Algoritma**
 - Semi-Supervised : Clustering/Klasifikasi
