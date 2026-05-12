@@ -1,6 +1,5 @@
-pandas
-numpy
-scikit-learn
-scipy
-openpyxl
-plotly
+fastapi
+uvicorn
+pydantic
+httpx
+python-dotenv
