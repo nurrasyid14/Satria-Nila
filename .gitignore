@@ -222,3 +222,11 @@ __marimo__/
 # Node modules
 node_modules/
 frontend/node_modules/
+
+
+# Machine Learning artifacts & logs
+mlflow.db
+mlruns/
+catboost_info/
+*.pkl
+!services/ml-service/app/artifacts/best_pycaret_model.pkl
