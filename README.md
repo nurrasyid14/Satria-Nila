@@ -262,7 +262,7 @@ Layanan mandiri untuk mengelola siklus hidup eksperimen Machine Learning.
 ## **Setup & Installation**
 
 ### **1. Prerequisites**
-- Python 3.10 atau lebih baru.
+- Python 3.11 (Sangat direkomendasikan untuk stabilitas PyCaret).
 - Docker Desktop (Opsional, jika ingin menggunakan Docker).
 
 ### **2. Instalasi Library (Local)**

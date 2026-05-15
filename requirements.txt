@@ -1,0 +1,21 @@
+# SATRIA Root Requirements (Python 3.11 recommended for PyCaret compatibility)
+
+# Core API & Web Server
+fastapi
+uvicorn[standard]
+pydantic
+python-dotenv
+httpx
+
+# Database & Infrastructure
+supabase>=2.4.0
+
+# Machine Learning & Data Processing
+pycaret>=3.3.0
+numpy<2.0.0
+scikit-learn<1.6.0
+pandas
+
+# Testing
+pytest
+pytest-asyncio
