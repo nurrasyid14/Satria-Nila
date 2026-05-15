@@ -1,18 +1,11 @@
-# services/data-service/app/core/supabase.py
-# INFRASTRUCTURE: Inisialisasi Supabase Client (Singleton Pattern)
-# Menggantikan db/supabase_client.py yang menggunakan os.getenv() langsung
-
+# services/data-service/app/core/supabase_client.py
 from supabase import create_client, Client
 from .config import get_settings
 
-# Inisialisasi client sekali saat modul di-import
-_settings = get_settings()
-supabase: Client = create_client(_settings.SUPABASE_URL, _settings.SUPABASE_KEY)
-
-
 def get_supabase() -> Client:
     """
-    Mengembalikan instance Supabase client.
-    Digunakan oleh routes untuk melakukan operasi database.
+    Mengembalikan instance Supabase client yang segar berdasarkan settings saat ini.
     """
-    return supabase
+    settings = get_settings()
+    # Inisialisasi client on-demand untuk menghindari stale state saat reload
+    return create_client(settings.SUPABASE_URL, settings.SUPABASE_KEY)

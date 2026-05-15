@@ -26,7 +26,8 @@ def insert_water_sample(sample: WaterSampleCreate):
             "data": response.data
         }
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Gagal menyimpan ke database: {str(e)}")
+        error_msg = f"Detail: {str(e)}"
+        raise HTTPException(status_code=500, detail=error_msg)
 
 
 @router.get("/data/samples")

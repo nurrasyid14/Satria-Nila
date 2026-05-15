@@ -17,7 +17,7 @@ def _find_and_load_env():
     for path in candidates:
         abs_path = os.path.abspath(path)
         if os.path.exists(abs_path):
-            load_dotenv(dotenv_path=abs_path)
+            load_dotenv(dotenv_path=abs_path, override=True)
             return abs_path
     return None
 
@@ -40,7 +40,6 @@ class Settings:
             )
 
 
-@lru_cache()
 def get_settings() -> Settings:
     """
     Singleton: Settings hanya dibaca dari disk sekali,
