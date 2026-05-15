@@ -259,20 +259,25 @@ Layanan mandiri untuk mengelola siklus hidup eksperimen Machine Learning.
 - **mlruns/**: Folder tempat MLflow menyimpan log fisik eksperimen (parameter, metrik akurasi, dan file model).
 - **Dockerfile**: Konfigurasi khusus untuk menjalankan server UI MLflow di dalam kontainer agar dapat diakses melalui web browser.
 
-## **How to Access**
+## **How to Run (Backend)**
 
-### **Windows PowerShell**
-``` pwsh
-x
+### **1. Menggunakan Docker (Rekomendasi)**
+Pastikan Docker Desktop sudah berjalan, lalu gunakan perintah berikut di terminal root:
+```pwsh
+docker-compose up --build
 ```
-### **MacOS Bash**
-``` bash
-x
+
+### **2. Menggunakan Script PowerShell (Opsi Windows)**
+Jika ingin menjalankan langsung di Windows untuk development cepat tanpa kontainer:
+```pwsh
+powershell -ExecutionPolicy Bypass -File .\dev.ps1
 ```
-### **Linux Bash**
-``` bash
-x
-```
+
+### **Endpoint Layanan**
+Setelah dijalankan, layanan backend dapat diakses di:
+- **API Gateway:** `http://localhost:8000` (Main Entry Point)
+- **ML Service:** `http://localhost:8001`
+- **Data Service:** `http://localhost:8002`
 
 ## **Preview Hasil (Laporan per tanggal ddmmyyyy dari file log.json)**
 
