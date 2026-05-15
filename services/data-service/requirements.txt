@@ -1,3 +1,5 @@
+fastapi
+uvicorn[standard]
+pydantic
 supabase>=2.4.0
 python-dotenv
-pydantic
