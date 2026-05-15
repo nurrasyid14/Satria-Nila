@@ -3,9 +3,10 @@ import pandas as pd
 import os
 
 # Menentukan path absolut ke model di folder artifacts
-# Base dir: services/ml-service/app/
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MODEL_PATH = os.path.join(BASE_DIR, 'artifacts', 'best_pycaret_model')
+# File ini berada di: domains/water/predict.py
+# Artifacts berada di: domains/water/artifacts/
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(CURRENT_DIR, 'artifacts', 'best_pycaret_model')
 
 try:
     # Memuat model sekali ke dalam memori agar proses prediksi lebih cepat
