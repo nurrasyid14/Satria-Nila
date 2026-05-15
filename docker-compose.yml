@@ -1,4 +1,4 @@
-version: '3.8'
+# Docker Compose configuration for SATRIA-Nila Microservices
 
 services:
   # 1. ML Service (Inference Engine)
