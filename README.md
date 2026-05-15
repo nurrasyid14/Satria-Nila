@@ -259,6 +259,31 @@ Layanan mandiri untuk mengelola siklus hidup eksperimen Machine Learning.
 - **mlruns/**: Folder tempat MLflow menyimpan log fisik eksperimen (parameter, metrik akurasi, dan file model).
 - **Dockerfile**: Konfigurasi khusus untuk menjalankan server UI MLflow di dalam kontainer agar dapat diakses melalui web browser.
 
+## **Setup & Installation**
+
+### **1. Prerequisites**
+- Python 3.10 atau lebih baru.
+- Docker Desktop (Opsional, jika ingin menggunakan Docker).
+
+### **2. Instalasi Library (Local)**
+Jika ingin menjalankan tanpa Docker, lakukan setup environment terlebih dahulu:
+```pwsh
+# Buat virtual environment
+python -m venv venv
+
+# Aktifkan venv
+.\venv\Scripts\Activate.ps1
+
+# Install semua dependensi
+pip install -r requirements.txt
+```
+
+### **3. Konfigurasi Environment**
+Salin file template `.env.example` menjadi `.env` dan isi dengan kredensial Supabase Anda:
+```pwsh
+cp .env.example .env
+```
+
 ## **How to Run (Backend)**
 
 ### **1. Menggunakan Docker (Rekomendasi)**
@@ -268,7 +293,7 @@ docker-compose up --build
 ```
 
 ### **2. Menggunakan Script PowerShell (Opsi Windows)**
-Jika ingin menjalankan langsung di Windows untuk development cepat tanpa kontainer:
+Cukup jalankan script ini untuk menyalakan 3 service sekaligus secara otomatis(pastikan sudah melakukan Setup & Installation):
 ```pwsh
 powershell -ExecutionPolicy Bypass -File .\dev.ps1
 ```
