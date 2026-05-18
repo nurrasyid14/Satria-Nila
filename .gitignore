@@ -229,7 +229,7 @@ mlflow.db
 mlruns/
 catboost_info/
 *.pkl
-!services/ml-service/app/artifacts/best_pycaret_model.pkl
+# !services/ml-service/app/artifacts/best_pycaret_model.pkl
 
 # Antigravity IDE
 .agents/
